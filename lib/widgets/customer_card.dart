@@ -3,12 +3,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class CustomerCard extends StatelessWidget {
+  final double width;
+  final String name;
+  final String image;
   const CustomerCard({
     super.key,
     required this.width,
+    required this.name,  required this.image,
   });
-
-  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +29,11 @@ class CustomerCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 25,
-                  backgroundImage: NetworkImage(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHRvqAGE6VUiv8X9_f3xjvPYUNLuEdRrne-A&s",
-                  ),
+                  backgroundImage: AssetImage(
+               image),
                 ),
                 SizedBox(width: 10),
-                Text("Maria\nGreen"),
+                Text("${name}"),
               ],
             ),
             const Text("Chemical Machinery"),

@@ -51,4 +51,14 @@ class TextStyles {
     color: const Color.fromARGB(255, 2, 2, 2), // Corrected RGBA to ARGB
     fontWeight: FontWeight.w600,
   );
+  static final TextStyle rubik17black22w200 = rubik.copyWith(
+    fontSize: 17,
+    color: const Color.fromARGB(255, 2, 2, 2), // Corrected RGBA to ARGB
+    fontWeight: FontWeight.w500,
+  );
+  static final TextStyle rubik14black22w200 = rubik.copyWith(
+    fontSize: 14,
+    color: const Color.fromARGB(255, 101, 101, 101), // Corrected RGBA to ARGB
+    fontWeight: FontWeight.w200,
+  );
 }

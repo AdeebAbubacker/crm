@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:crm_app/core/styles/text_styles.dart';
+import 'package:crm_app/screens/interaction_history_screen.dart';
 import 'package:flutter/material.dart';
 
 class CustomerInfoScreen extends StatelessWidget {
@@ -183,32 +184,89 @@ class TaskScheduleCard extends StatelessWidget {
               itemCount: 31, // Number of days in October
               itemBuilder: (context, index) {
                 int date = index + 1; // Dates from 1 to 31
+                Map<int, dynamic> customDateImages = {
+                  4: {
+                    'image': 'assets/avatar/person1.jpg',
+                    'color': const Color(0XFF58C3F8)
+                  },
+                  11: {
+                    'image': 'assets/avatar/person2.jpg',
+                    'color': const Color(0XFFFFFFFF)
+                  },
+                  12: {
+                    'image': 'assets/avatar/person5.jpg',
+                    'color': const Color(0XFFD3C689)
+                  },
+                  16: {
+                    'image': 'assets/avatar/person1.jpg',
+                    'color': const Color(0XFFDC7DE5)
+                  },
+                  19: {
+                    'image': 'assets/avatar/person2.jpg',
+                    'color': const Color.fromARGB(255, 125, 229, 217)
+                  },
+                  24: {
+                    'image': 'assets/avatar/person5.jpg',
+                    'color': const Color.fromARGB(255, 133, 248, 88)
+                  },
+                };
                 return Container(
                   width: 30,
                   height: 40,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
+                    color: customDateImages.containsKey(date)
+                        ? customDateImages[date]!['color']
+                        : Colors
+                            .transparent, // Custom color for each special date
+
                     border: Border.all(
                       color: Colors.black,
                       width: 0.2,
                     ), // Border color
                     borderRadius: BorderRadius.circular(8), // Rounded corners
                   ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        bottom: 2,
-                        left: 2,
-                        child: Text(
-                          '$date', // Displaying the date
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w200,
-                            fontSize: 14,
-                          ),
+                  child: customDateImages.containsKey(date)
+                      ? Stack(
+                          children: [
+                            Positioned(
+                              bottom: 2,
+                              left: 2,
+                              child: Text(
+                                '$date', // Displaying the date
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              top: 2,
+                              right: 4,
+                              child: CircleAvatar(
+                                radius: 12, // Adjust size
+                                backgroundImage: AssetImage(
+                                    customDateImages[date]!['image']),
+                              ),
+                            ),
+                          ],
+                        )
+                      : Stack(
+                          children: [
+                            Positioned(
+                              bottom: 2,
+                              left: 2,
+                              child: Text(
+                                '$date', // Displaying the date
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w200,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
+                  // Custom color for special dates
                 );
               },
             ),
@@ -293,24 +351,39 @@ class CustomerInfoCard extends StatelessWidget {
         color: const Color(0XFFE8E9DF),
         borderRadius: BorderRadius.circular(25),
       ),
-      child: const Column(
+      child: Column(
         children: [
           Padding(
             padding: EdgeInsets.all(8.0),
             child: Row(
               children: [
                 CircularIcon(
-                  icon: Icon(Icons.ssid_chart_outlined),
+                  icon: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset("assets/icons/merge.png"),
+                  ),
                 ),
                 SizedBox(
                   width: 10,
                 ),
                 CircularIcon(
-                  icon: Icon(Icons.share),
+                  icon: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Image.asset("assets/icons/diverge.png"),
+                  ),
                 ),
                 Spacer(),
-                CircularIcon(
-                  icon: Icon(Icons.more_horiz_outlined),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return InteractionHistoryScreen();
+                      },
+                    ));
+                  },
+                  child: CircularIcon(
+                    icon: Icon(Icons.more_horiz_outlined),
+                  ),
                 ),
               ],
             ),
@@ -318,20 +391,28 @@ class CustomerInfoCard extends StatelessWidget {
           Center(
             child: Column(
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 50, // Adjust size
                   backgroundImage: AssetImage('assets/avatar/person5.jpg'),
                 ),
-                Text("Eva Robinsion"),
-                Text("CEO, Inc, Alabama MAchinery & Supply"),
-                SizedBox(
+                Text(
+                  "Eva Robinsion",
+                  style: TextStyles.rubik17black22w200,
+                ),
+                Text(
+                  "CEO, Inc, Alabama MAchinery &/n Supply",
+                  style: TextStyles.rubik14black22w200,
+                  textAlign: TextAlign.center,
+                ),
+                //   rubik14black22w200
+                const SizedBox(
                   height: 20,
                 ),
               ],
             ),
           ),
-          OptionsIcons(),
-          SizedBox(
+          const OptionsIcons(),
+          const SizedBox(
             height: 20,
           ),
         ],
@@ -350,16 +431,18 @@ class OptionsIcons extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const CircularIcon(
-          icon: Icon(Icons.edit),
-        ),
+        CircularIcon(
+            icon: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset("assets/icons/edit_outer.png"),
+        )),
         const SizedBox(
           width: 10,
         ), //
         CircularIcon(
           icon: Padding(
             padding: const EdgeInsets.all(5.0),
-            child: Image.asset("assets/icons/mail.png"),
+            child: Image.asset("assets/icons/email.png"),
           ),
         ),
         const SizedBox(
