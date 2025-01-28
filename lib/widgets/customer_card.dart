@@ -66,7 +66,7 @@ class _CustomerCardState extends State<CustomerCard> {
               Flexible(
                 child: Text(
                   widget.userModel.position,
-                  style: TextStyles.rubik12black22w200,
+                  style: TextStyles.rubik12black22w400,
                   softWrap: true,
                   overflow: TextOverflow.visible,
                 ),
@@ -108,67 +108,63 @@ class _CustomerCardState extends State<CustomerCard> {
                     ),
                   ),
                   const SizedBox(width: 5),
-                  Expanded(
-                    flex: 1,
-                    child: GestureDetector(
-                      onTap: () {
-                        widget.onTap();
-                        Future.delayed(
-                          Duration(milliseconds: 50),
-                          () {
-                            return Navigator.push(
-                              context,
-                              PageRouteBuilder(
-                                pageBuilder:
-                                    (context, animation, secondaryAnimation) {
-                                  return CustomerInfoScreen(
-                                    userModel: widget.userModel,
-                                  );
-                                },
-                                transitionsBuilder: (context, animation,
-                                    secondaryAnimation, child) {
-                                  const begin =
-                                      Offset(1.0, 0.0); // Start from right
-                                  const end = Offset.zero; // End at the center
-                                  const curve =
-                                      Curves.easeInOut; // Smooth curve
+                  GestureDetector(
+                    onTap: () {
+                      widget.onTap();
+                      Future.delayed(
+                        Duration(milliseconds: 50),
+                        () {
+                          return Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) {
+                                return CustomerInfoScreen(
+                                  userModel: widget.userModel,
+                                );
+                              },
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                const begin =
+                                    Offset(1.0, 0.0); // Start from right
+                                const end = Offset.zero; // End at the center
+                                const curve = Curves.easeInOut; // Smooth curve
 
-                                  var tween = Tween(begin: begin, end: end)
-                                      .chain(CurveTween(curve: curve));
-                                  var offsetAnimation = animation.drive(tween);
+                                var tween = Tween(begin: begin, end: end)
+                                    .chain(CurveTween(curve: curve));
+                                var offsetAnimation = animation.drive(tween);
 
-                                  return SlideTransition(
-                                      position: offsetAnimation, child: child);
-                                },
-                              ),
-                            );
-                          },
-                        );
-                      },
-                      child: Container(
-                        height: 55,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: widget.isSelected
-                              ? const Color.fromARGB(255, 18, 18, 18)
-                              : const Color(0XFFEEEEE7),
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Transform.rotate(
-                              angle: -45 * 3.1415927 / 180,
-                              child: Transform.scale(
-                                scaleX: 0.6,
-                                scaleY: 0.6,
-                                child: Image.asset(
-                                  "assets/icons/back_arrow.png",
-                                  width: 25,
-                                  color: widget.isSelected
-                                      ? const Color(0XFFEEEEE7)
-                                      : const Color.fromARGB(
-                                          255, 103, 103, 103),
-                                ),
+                                return SlideTransition(
+                                    position: offsetAnimation, child: child);
+                              },
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Container(
+                      height: 55,
+                      width: 55,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: widget.isSelected
+                            ? const Color.fromARGB(255, 18, 18, 18)
+                            : const Color(0XFFEEEEE7),
+                      ),
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Transform.rotate(
+                            angle: -45 * 3.1415927 / 180,
+                            child: Transform.scale(
+                              scaleX: 0.6,
+                              scaleY: 0.6,
+                              child: Image.asset(
+                                "assets/icons/back_arrow.png",
+                                width: 25,
+                                color: widget.isSelected
+                                    ? const Color(0XFFEEEEE7)
+                                    : const Color.fromARGB(255, 103, 103, 103),
                               ),
                             ),
                           ),

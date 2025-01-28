@@ -111,4 +111,9 @@ class TextStyles {
     color:Colors.grey, 
     fontWeight: FontWeight.w500,
   );
+  static final TextStyle rubik12black22w400 = rubik.copyWith(
+    fontSize: 12,
+    color: const Color.fromARGB(255, 101, 101, 101), 
+    fontWeight: FontWeight.w400,
+  );
 }
