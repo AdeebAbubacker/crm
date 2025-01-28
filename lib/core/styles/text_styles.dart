@@ -34,7 +34,7 @@ class TextStyles {
   static final TextStyle rubik18black22w100 = rubik.copyWith(
     fontSize: 18,
     color: const Color.fromARGB(255, 2, 2, 2), 
-    fontWeight: FontWeight.w100,
+    fontWeight: FontWeight.w500,
   );
   static final TextStyle rubik14black22 = rubik.copyWith(
     fontSize: 14,
