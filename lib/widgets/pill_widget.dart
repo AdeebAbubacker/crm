@@ -1,3 +1,4 @@
+import 'package:crm_app/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class PillWidget extends StatefulWidget {
@@ -30,10 +31,12 @@ class _PillWidgetState extends State<PillWidget> {
         ),
         child: Text(
           widget.text,
-          style: TextStyle(
-            color: widget.isSelected ? Colors.white : Colors.grey,
-            fontWeight: FontWeight.w300, // Thin text
-          ),
+          style:
+              widget.isSelected ? TextStyles.pillStyle1 : TextStyles.pillStyle2,
+          // TextStyle(
+          //   color: widget.isSelected ? Colors.white : Colors.grey,
+          //   fontWeight: FontWeight.w500, // Thin text
+          // ),
         ),
       ),
     );

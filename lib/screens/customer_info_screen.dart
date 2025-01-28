@@ -38,7 +38,7 @@ class CustomerInfoScreen extends StatelessWidget {
                         color: Colors.white,
                       ),
                       child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(14.0),
                           child: Transform.rotate(
                             angle: pi,
                             child: Transform.scale(
@@ -50,12 +50,7 @@ class CustomerInfoScreen extends StatelessWidget {
                                 width: 30,
                               ),
                             ),
-                          )
-                          // Icon(
-                          //   Icons.arrow_back_rounded,
-                          //   color: Colors.black,
-                          // ),
-                          ),
+                          )),
                     ),
                   ),
                   Padding(
@@ -135,7 +130,7 @@ class TaskScheduleCard extends StatelessWidget {
                   ),
                   child: Text(
                     "Task Schedule",
-                    style: TextStyles.rubik16black22,
+                    style: TextStyles.rubik16black22w400,
                   ),
                 ),
                 const Spacer(),
@@ -189,7 +184,7 @@ class TaskScheduleCard extends StatelessWidget {
             ),
             child: Text(
               "October",
-              style: TextStyles.rubik18black22w600,
+              style: TextStyles.rubik19black22w600,
             ),
           ),
           // Dates grid for October
@@ -324,7 +319,7 @@ class DetailedInfoCard extends StatelessWidget {
           ),
           Text(
             "Detailed Information",
-            style: TextStyles.rubik14black22,
+            style: TextStyles.rubik14black22w400,
           ),
           const Spacer(),
           CircularIcon(

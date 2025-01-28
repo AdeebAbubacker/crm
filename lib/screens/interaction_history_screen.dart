@@ -30,23 +30,23 @@ class InteractionHistoryScreen extends StatelessWidget {
                       width: 50,
                       height: 50,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: const Color(0XFF2C3235)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Transform.rotate(
-                          angle: pi,
-                          child: Transform.scale(
-                            scaleX: 0.7,
-                            scaleY: 0.9,
-                            child: Image.asset(
-                              'assets/icons/back_arrow.png',
-                              color: Colors.white,
-                              width: 30,
-                            ),
-                          ),
-                        ),
+                        borderRadius: BorderRadius.circular(25),
+                        color: Colors.white,
                       ),
+                      child: Padding(
+                          padding: const EdgeInsets.all(14.0),
+                          child: Transform.rotate(
+                            angle: pi,
+                            child: Transform.scale(
+                              scaleX: 0.6,
+                              scaleY: 0.6,
+                              child: Image.asset(
+                                'assets/icons/back_arrow.png',
+                                color: const Color(0XFF2C3235),
+                                width: 30,
+                              ),
+                            ),
+                          )),
                     ),
                   ),
                   SizedBox(
@@ -193,18 +193,18 @@ class InteractionCard extends StatelessWidget {
               children: [
                 Text(
                   "Oct 4",
-                  style: TextStyles.rubik13grey82,
+                  style: TextStyles.rubik13grey82w300,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Royal Package",
-                      style: TextStyles.rubik15black22,
+                      style: TextStyles.rubik15black22w400,
                     ),
                     Text(
                       "Opportunity",
-                      style: TextStyles.rubik15black22,
+                      style: TextStyles.rubik15black22w400,
                     ),
                   ],
                 ),
