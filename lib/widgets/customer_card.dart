@@ -9,11 +9,11 @@ class CustomerCard extends StatefulWidget {
   final bool isSelected;
   final VoidCallback onTap;
   final double width;
-final UserModel userModel;
+  final UserModel userModel;
   const CustomerCard({
     super.key,
     required this.width,
-  required this.userModel,
+    required this.userModel,
     required this.isSelected,
     required this.onTap,
   });
@@ -49,9 +49,9 @@ class _CustomerCardState extends State<CustomerCard> {
                   const SizedBox(width: 10),
                   Flexible(
                     child: Text(
-                     widget.userModel.name.contains(" ")
-                          ?  widget.userModel.name.replaceFirst(" ", "\n")
-                          :  widget.userModel.name,
+                      widget.userModel.name.contains(" ")
+                          ? widget.userModel.name.replaceFirst(" ", "\n")
+                          : widget.userModel.name,
                       style: const TextStyle(fontSize: 16),
                       softWrap: true,
                       maxLines: 2,
@@ -65,7 +65,7 @@ class _CustomerCardState extends State<CustomerCard> {
               ),
               Flexible(
                 child: Text(
-                  widget.userModel.text,
+                  widget.userModel.position,
                   style: TextStyles.rubik12black22w200,
                   softWrap: true,
                   overflow: TextOverflow.visible,
@@ -121,7 +121,9 @@ class _CustomerCardState extends State<CustomerCard> {
                               PageRouteBuilder(
                                 pageBuilder:
                                     (context, animation, secondaryAnimation) {
-                                  return  CustomerInfoScreen(userModel: widget.userModel,);
+                                  return CustomerInfoScreen(
+                                    userModel: widget.userModel,
+                                  );
                                 },
                                 transitionsBuilder: (context, animation,
                                     secondaryAnimation, child) {
@@ -154,12 +156,20 @@ class _CustomerCardState extends State<CustomerCard> {
                         child: Center(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              "assets/icons/back_arrow.png",
-                              width: 15,
-                              color: widget.isSelected
-                                  ? const Color(0XFFEEEEE7)
-                                  : const Color.fromARGB(255, 103, 103, 103),
+                            child: Transform.rotate(
+                              angle: -45 * 3.1415927 / 180,
+                              child: Transform.scale(
+                                scaleX: 0.6,
+                                scaleY: 0.6,
+                                child: Image.asset(
+                                  "assets/icons/back_arrow.png",
+                                  width: 25,
+                                  color: widget.isSelected
+                                      ? const Color(0XFFEEEEE7)
+                                      : const Color.fromARGB(
+                                          255, 103, 103, 103),
+                                ),
+                              ),
                             ),
                           ),
                         ),

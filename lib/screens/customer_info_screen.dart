@@ -169,10 +169,13 @@ class TaskScheduleCard extends StatelessWidget {
                     child: Transform.scale(
                       scaleX: 0.6,
                       scaleY: 0.6,
-                      child: Image.asset(
-                        'assets/icons/back_arrow.png',
-                        color: Colors.white,
-                        width: 30,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Image.asset(
+                          'assets/icons/back_arrow.png',
+                          color: Colors.white,
+                          width: 30,
+                        ),
                       ),
                     ),
                   ),
@@ -464,24 +467,24 @@ class OptionsIcons extends StatelessWidget {
       children: [
         CircularIcon(
             icon: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(15.0),
           child: Image.asset("assets/icons/edit_outer.png"),
         )),
         const SizedBox(
-          width: 10,
+          width: 5,
         ), //
         CircularIcon(
           icon: Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: const EdgeInsets.all(15.0),
             child: Image.asset("assets/icons/email.png"),
           ),
         ),
         const SizedBox(
-          width: 10,
+          width: 5,
         ),
         CircularIcon(
           icon: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(15.0),
             child: Transform.rotate(
               angle: 0.2,
               child: Image.asset(
@@ -492,18 +495,21 @@ class OptionsIcons extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          width: 10,
+          width: 5,
         ),
 
         CircularIcon(
           icon: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(15.0),
             child: Image.asset("assets/icons/calendar.png"),
           ),
         ),
+        const SizedBox(
+          width: 5,
+        ),
         CircularIcon(
           icon: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(15.0),
             child: Image.asset("assets/icons/add-event.png"),
           ),
         ),
