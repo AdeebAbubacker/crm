@@ -1,11 +1,16 @@
 import 'dart:math';
 
+import 'package:crm_app/core/model/user_model.dart';
 import 'package:crm_app/core/styles/text_styles.dart';
 import 'package:crm_app/screens/interaction_history_screen.dart';
 import 'package:flutter/material.dart';
 
 class CustomerInfoScreen extends StatelessWidget {
-  const CustomerInfoScreen({super.key});
+  final UserModel userModel;
+  const CustomerInfoScreen({
+    super.key,
+    required this.userModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,32 +26,37 @@ class CustomerInfoScreen extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Transform.rotate(
-                          angle: pi,
-                          child: Transform.scale(
-                            scaleX: 0.6,
-                            scaleY: 0.6,
-                            child: Image.asset(
-                              'assets/icons/back_arrow.png',
-                              color: Colors.black,
-                              width: 30,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: Colors.white,
+                      ),
+                      child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Transform.rotate(
+                            angle: pi,
+                            child: Transform.scale(
+                              scaleX: 0.6,
+                              scaleY: 0.6,
+                              child: Image.asset(
+                                'assets/icons/back_arrow.png',
+                                color: Colors.black,
+                                width: 30,
+                              ),
                             ),
+                          )
+                          // Icon(
+                          //   Icons.arrow_back_rounded,
+                          //   color: Colors.black,
+                          // ),
                           ),
-                        )
-                        // Icon(
-                        //   Icons.arrow_back_rounded,
-                        //   color: Colors.black,
-                        // ),
-                        ),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
@@ -80,7 +90,9 @@ class CustomerInfoScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 10),
-              const CustomerInfoCard(),
+              CustomerInfoCard(
+                userModel: userModel,
+              ),
               const DetailedInfoCard(),
               const TaskScheduleCard(),
               const SizedBox(
@@ -133,8 +145,16 @@ class TaskScheduleCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50)),
                   width: 50,
                   height: 50,
-                  child: const Icon(Icons.edit),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Image.asset(
+                      'assets/icons/external-link.png',
+                      color: const Color.fromARGB(255, 59, 59, 59),
+                      width: 30,
+                    ),
+                  ),
                 ),
+                //
                 const SizedBox(
                   width: 10,
                 ),
@@ -304,11 +324,17 @@ class DetailedInfoCard extends StatelessWidget {
             style: TextStyles.rubik14black22,
           ),
           const Spacer(),
-          const CircularIcon(
-            icon: Icon(
-              Icons.edit,
+          CircularIcon(
+            icon: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Image.asset(
+                'assets/icons/edit.png',
+                color: const Color.fromARGB(255, 59, 59, 59),
+                width: 30,
+              ),
             ),
           ),
+          //assets/icons\edit.png
           const SizedBox(
             width: 10,
           ),
@@ -339,8 +365,10 @@ class DetailedInfoCard extends StatelessWidget {
 }
 
 class CustomerInfoCard extends StatelessWidget {
+  final UserModel userModel;
   const CustomerInfoCard({
     super.key,
+    required this.userModel,
   });
 
   @override
@@ -391,18 +419,21 @@ class CustomerInfoCard extends StatelessWidget {
           Center(
             child: Column(
               children: [
-                const CircleAvatar(
+                CircleAvatar(
                   radius: 50, // Adjust size
-                  backgroundImage: AssetImage('assets/avatar/person5.jpg'),
+                  backgroundImage: AssetImage(userModel.image),
                 ),
                 Text(
-                  "Eva Robinsion",
+                  userModel.name,
                   style: TextStyles.rubik17black22w200,
                 ),
                 Text(
-                  "CEO, Inc, Alabama MAchinery &/n Supply",
+                  '${userModel.position} ${userModel.text.split(' ').take(3).join(' ')}\n${userModel.text.split(' ').skip(3).join(' ')}',
                   style: TextStyles.rubik14black22w200,
                   textAlign: TextAlign.center,
+                  maxLines: 2, // Limit to 2 lines
+                  overflow:
+                      TextOverflow.ellipsis, // Truncate text if it's too long
                 ),
                 //   rubik14black22w200
                 const SizedBox(
@@ -454,7 +485,7 @@ class OptionsIcons extends StatelessWidget {
             child: Transform.rotate(
               angle: 0.2,
               child: Image.asset(
-                "assets/icons/call.png",
+                "assets/icons/telephone.png",
                 width: 12,
               ),
             ),
@@ -463,12 +494,20 @@ class OptionsIcons extends StatelessWidget {
         const SizedBox(
           width: 10,
         ),
+
         CircularIcon(
           icon: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.asset("assets/icons/calender_plus.png"),
+            child: Image.asset("assets/icons/calendar.png"),
           ),
         ),
+        CircularIcon(
+          icon: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset("assets/icons/add-event.png"),
+          ),
+        ),
+        //assets/icons\calendar.png
       ],
     );
   }

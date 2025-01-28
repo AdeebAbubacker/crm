@@ -9,42 +9,47 @@ class InteractionHistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0XFF272815),
+      backgroundColor: Color(0XFF272815),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
+        padding: EdgeInsets.symmetric(
           horizontal: 16,
         ),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 60,
               ),
               Row(
                 children: [
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: const Color(0XFF2C3235)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Transform.rotate(
-                        angle: pi,
-                        child: Transform.scale(
-                          scaleX: 0.7,
-                          scaleY: 0.9,
-                          child: Image.asset(
-                            'assets/icons/back_arrow.png',
-                            color: Colors.white,
-                            width: 30,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: const Color(0XFF2C3235)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Transform.rotate(
+                          angle: pi,
+                          child: Transform.scale(
+                            scaleX: 0.7,
+                            scaleY: 0.9,
+                            child: Image.asset(
+                              'assets/icons/back_arrow.png',
+                              color: Colors.white,
+                              width: 30,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     width: 10,
                   ),
                   Column(
@@ -68,11 +73,12 @@ class InteractionHistoryScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         color: const Color(0XFF2C3235)),
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.ios_share_outlined,
-                        color: Colors.white,
+                    child: Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: Image.asset(
+                        'assets/icons/external-link.png',
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        width: 30,
                       ),
                     ),
                   ),

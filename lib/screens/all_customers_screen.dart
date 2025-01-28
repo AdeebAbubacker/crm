@@ -15,66 +15,93 @@ class AllCustomersScreen extends StatefulWidget {
 }
 
 class _AllCustomersScreenState extends State<AllCustomersScreen> {
+  final List<String> pills = ["All", "Permanent", "Hot", "New"];
+  int selectedIndex = 0;
+  int cardselectedIndex = -1;
   final List<UserModel> users = [
     UserModel(
       image: 'assets/avatar/person1.jpg',
-      name: 'Maria',
+      name: 'Maria Peter',
+      text: 'Chemical Machinery',
+      position: 'CEO, Alabama Machinery',
     ),
     UserModel(
       image: 'assets/avatar/person2.jpg',
-      name: 'Sara',
+      name: 'Sara Peter',
+      text: 'Tech Solutions, Inc',
+      position: 'Founder, Tech Solutions',
+    ),
+    UserModel(
+      image: 'assets/avatar/person3.jpg',
+      name: 'Margret Teresa',
+      text: 'Alabama Machinery',
+      position: 'Managing Director',
+    ),
+    UserModel(
+      image: 'assets/avatar/person4.jpg',
+      name: 'Daniel Chacko',
+      text: 'Creative Design Studio',
+      position: 'Lead Designer',
     ),
     UserModel(
       image: 'assets/avatar/person5.jpg',
-      name: 'Peter',
+      name: 'Peter Parkers',
+      text: 'Web Development',
+      position: 'Full Stack Developer',
     ),
     UserModel(
-      image: 'assets/avatar/person1.jpg',
-      name: 'Maria',
+      image: 'assets/avatar/person6.jpg',
+      name: 'Nickolos Jackson',
+      text: 'Data Analyst',
+      position: 'Senior Data Analyst',
     ),
     UserModel(
-      image: 'assets/avatar/person2.jpg',
-      name: 'Sara',
+      image: 'assets/avatar/person7.jpg',
+      name: 'Alexander Suorov',
+      text: 'Product Manager',
+      position: 'Product Lead',
     ),
     UserModel(
-      image: 'assets/avatar/person5.jpg',
-      name: 'Peter',
+      image: 'assets/avatar/person8.jpg',
+      name: 'Albert Nico',
+      text: 'Marketing Strategist',
+      position: 'Marketing Head',
     ),
     UserModel(
-      image: 'assets/avatar/person1.jpg',
-      name: 'Maria',
+      image: 'assets/avatar/person8.jpg',
+      name: 'Maria Peter',
+      text: 'Software Engineer',
+      position: 'Lead Engineer',
     ),
     UserModel(
-      image: 'assets/avatar/person2.jpg',
-      name: 'Sara',
+      image: 'assets/avatar/person10.jpg',
+      name: 'Sara Peter',
+      text: 'Cloud Architect',
+      position: 'Cloud Solutions Architect',
     ),
     UserModel(
-      image: 'assets/avatar/person5.jpg',
-      name: 'Peter',
+      image: 'assets/avatar/person11.jpg',
+      name: 'Margret Teresa',
+      text: 'Business Consultant',
+      position: 'Senior Consultant',
     ),
     UserModel(
-      image: 'assets/avatar/person1.jpg',
-      name: 'Maria',
+      image: 'assets/avatar/person12.jpg',
+      name: 'Daniel Chacko',
+      text: 'UX/UI Designer',
+      position: 'UX/UI Lead',
     ),
     UserModel(
-      image: 'assets/avatar/person2.jpg',
-      name: 'Sara',
+      image: 'assets/avatar/person13.jpg',
+      name: 'Peter Parkers',
+      text: 'Systems Engineer',
+      position: 'Senior Systems Engineer',
     ),
     UserModel(
-      image: 'assets/avatar/person5.jpg',
-      name: 'Peter',
-    ),
-    UserModel(
-      image: 'assets/avatar/person1.jpg',
-      name: 'Maria',
-    ),
-    UserModel(
-      image: 'assets/avatar/person2.jpg',
-      name: 'Sara',
-    ),
-    UserModel(
-      image: 'assets/avatar/person5.jpg',
-      name: 'Peter',
+      image: 'assets/avatar/person14.jpg',
+      name: 'Nickolos Jackson',
+      text: 'Security Specialist',
+      position: 'Cybersecurity Specialist',
     ),
   ];
   @override
@@ -153,43 +180,30 @@ class _AllCustomersScreenState extends State<AllCustomersScreen> {
                             ),
                           ),
                         ),
-
-                        // Container(
-                        //   width: 50,
-                        //   height: 50,
-                        //   decoration: BoxDecoration(
-                        //     borderRadius: BorderRadius.circular(25),
-                        //     color: Colors.white,
-                        //   ),
-                        //   child: Padding(
-                        //     padding: const EdgeInsets.all(8.0),
-                        //     child: Image.asset(
-                        //       "assets/icons/search.png",
-                        //       width: 23,
-                        //       height: 23,
-                        //       fit: BoxFit.contain,
-                        //     ),
-                        //   ),
-                        // )
                       ],
                     ),
                     const SizedBox(height: 10),
-                    const Row(
-                      children: [
-                        PillWidget(text: 'All'),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        PillWidget(text: 'Permanent'),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        PillWidget(text: 'Hot'),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        PillWidget(text: 'New'),
-                      ],
+                    SizedBox(
+                      height: 50, // Set height for the pills
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: pills.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: PillWidget(
+                              text: pills[index],
+                              isSelected: selectedIndex == index,
+                              onTap: () {
+                                setState(() {
+                                  selectedIndex =
+                                      index; // Change selected pill on tap
+                                });
+                              },
+                            ),
+                          );
+                        },
+                      ),
                     ),
                     LayoutBuilder(
                       builder: (context, constraints) {
@@ -212,14 +226,22 @@ class _AllCustomersScreenState extends State<AllCustomersScreen> {
                                   onTap: () {
                                     Navigator.push(context, MaterialPageRoute(
                                       builder: (context) {
-                                        return const CustomerInfoScreen();
+                                        return CustomerInfoScreen(
+                                          userModel: users[index],
+                                        );
                                       },
                                     ));
                                   },
                                   child: CustomerCard(
+                                    isSelected: cardselectedIndex == index,
+                                    onTap: () {
+                                      setState(() {
+                                        cardselectedIndex =
+                                            index; // Change selected pill on tap
+                                      });
+                                    },
                                     width: width,
-                                    name: users[index].name,
-                                    image: users[index].image,
+                                    userModel: users[index],
                                   ),
                                 ),
                               ),
