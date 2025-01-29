@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:crm_app/core/model/user_model.dart';
 import 'package:crm_app/core/styles/text_styles.dart';
-import 'package:crm_app/screens/interaction_history_screen.dart';
+import 'package:crm_app/screens/mobile/interaction_histor_mob_screen.dart';
 import 'package:flutter/material.dart';
 
-class CustomerInfoScreen extends StatelessWidget {
+class CustomerInfoMobScreen extends StatelessWidget {
   final UserModel userModel;
-  const CustomerInfoScreen({
+  const CustomerInfoMobScreen({
     super.key,
     required this.userModel,
   });
@@ -15,22 +15,62 @@ class CustomerInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: const Color(0XFFECEFEC),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Container(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: Colors.white,
+                        ),
+                        child: Padding(
+                            padding: const EdgeInsets.all(14.0),
+                            child: Transform.rotate(
+                              angle: pi,
+                              child: Transform.scale(
+                                scaleX: 0.6,
+                                scaleY: 0.6,
+                                child: Image.asset(
+                                  'assets/icons/back_arrow.png',
+                                  color: Colors.black,
+                                  width: 30,
+                                ),
+                              ),
+                            )),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 10,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 10),
+                          Text("Customer", style: TextStyles.rubik18black22w100),
+                          Text("Information",
+                              style: TextStyles.rubik18black22w100),
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                    Container(
                       width: 50,
                       height: 50,
                       decoration: BoxDecoration(
@@ -38,62 +78,25 @@ class CustomerInfoScreen extends StatelessWidget {
                         color: Colors.white,
                       ),
                       child: Padding(
-                          padding: const EdgeInsets.all(14.0),
-                          child: Transform.rotate(
-                            angle: pi,
-                            child: Transform.scale(
-                              scaleX: 0.6,
-                              scaleY: 0.6,
-                              child: Image.asset(
-                                'assets/icons/back_arrow.png',
-                                color: Colors.black,
-                                width: 30,
-                              ),
-                            ),
-                          )),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 10),
-                        Text("Customer", style: TextStyles.rubik18black22w100),
-                        Text("Information",
-                            style: TextStyles.rubik18black22w100),
-                      ],
-                    ),
-                  ),
-                  const Spacer(),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Image.asset(
-                        "assets/icons/star.png",
+                        padding: const EdgeInsets.all(12.0),
+                        child: Image.asset(
+                          "assets/icons/star.png",
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              CustomerInfoCard(
-                userModel: userModel,
-              ),
-              const DetailedInfoCard(),
-              const TaskScheduleCard(),
-              const SizedBox(
-                height: 50,
-              ),
-            ],
+                  ],
+                ),
+                const SizedBox(height: 10),
+                CustomerInfoCard(
+                  userModel: userModel,
+                ),
+                const DetailedInfoCard(),
+                const TaskScheduleCard(),
+                const SizedBox(
+                  height: 50,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -403,7 +406,7 @@ class CustomerInfoCard extends StatelessWidget {
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
-                        return InteractionHistoryScreen();
+                        return InteractionHistoryMobScreen();
                       },
                     ));
                   },

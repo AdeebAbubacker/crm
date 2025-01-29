@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:crm_app/core/model/user_model.dart';
 import 'package:crm_app/core/styles/text_styles.dart';
-import 'package:crm_app/screens/customer_info_screen.dart';
+import 'package:crm_app/screens/mobile/customer_info_mob_screen.dart';
 import 'package:flutter/material.dart';
 
 class CustomerCard extends StatefulWidget {
@@ -90,7 +90,10 @@ class _CustomerCardState extends State<CustomerCard> {
                             : const Color(0XFFEEEEE7),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.only(
+                          top: 8,
+                          left: 8,
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -119,7 +122,7 @@ class _CustomerCardState extends State<CustomerCard> {
                             PageRouteBuilder(
                               pageBuilder:
                                   (context, animation, secondaryAnimation) {
-                                return CustomerInfoScreen(
+                                return CustomerInfoMobScreen(
                                   userModel: widget.userModel,
                                 );
                               },
