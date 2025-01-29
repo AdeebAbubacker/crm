@@ -339,7 +339,10 @@ class _InteractionHistoryTabScreenState
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
         child: Padding(
-          padding: const EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.only(
+            top: 10,
+            bottom: 10,
+          ),
           child: AppBar(
             automaticallyImplyLeading: false,
             leading: null,
@@ -489,7 +492,7 @@ class InteractionCard extends StatelessWidget {
                 children: [
                   Text(
                     interactionModel.date,
-                    style: TextStyles.rubik13grey82w300,
+                    style: TextStyles.rubik13grey82w500,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

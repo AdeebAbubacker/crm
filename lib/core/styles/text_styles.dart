@@ -67,12 +67,17 @@ class TextStyles {
     fontWeight: FontWeight.w200,
   );
   static final TextStyle rubik12black33w200 = rubik.copyWith(
-    fontSize: 11,
+    fontSize: 10,
     color: const Color.fromARGB(255, 53, 53, 53),
     fontWeight: FontWeight.w500,
   );
   static final TextStyle rubik8black33w200 = rubik.copyWith(
     fontSize: 8,
+    color: const Color.fromARGB(255, 119, 119, 119),
+    fontWeight: FontWeight.w500,
+  );
+   static final TextStyle rubik7black33w200 = rubik.copyWith(
+    fontSize: 7,
     color: const Color.fromARGB(255, 119, 119, 119),
     fontWeight: FontWeight.w500,
   );
@@ -94,9 +99,9 @@ class TextStyles {
   static final TextStyle rubik13grey82w300 = rubik.copyWith(
     fontSize: 13,
     fontWeight: FontWeight.w300,
-    color: const Color.fromARGB(255, 82, 82, 82),
+    color: const Color.fromARGB(255, 35, 35, 35),
   );
-  static final TextStyle rubik15black22w400 = rubik.copyWith(
+  static final TextStyle rubik15black22w200 = rubik.copyWith(
     fontSize: 15,
     color: const Color.fromARGB(255, 2, 2, 2),
     fontWeight: FontWeight.w200,
@@ -180,5 +185,20 @@ class TextStyles {
     fontSize: 16,
     color: Color(0xFF181818), // Equivalent to RGB(24, 24, 24)
     fontWeight: FontWeight.w600,
+  );
+  static final TextStyle rubik15black18 = rubik.copyWith(
+    fontSize: 15,
+    color: Colors.black,
+    fontWeight: FontWeight.w600,
+  );
+  static final TextStyle rubik13grey82w500 = rubik.copyWith(
+    fontSize: 13,
+    fontWeight: FontWeight.w500,
+    color: const Color.fromARGB(255, 18, 18, 18),
+  );
+  static final TextStyle rubik15black22w400 = rubik.copyWith(
+    fontSize: 15,
+    color: const Color.fromARGB(255, 2, 2, 2),
+    fontWeight: FontWeight.w400,
   );
 }

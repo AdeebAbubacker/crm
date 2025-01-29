@@ -33,7 +33,7 @@ class ResponsiveScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth > 600) {
+        if (constraints.maxWidth > 550) {
           return const AllCustomersTabScreen();
         } else {
           return const AllCustomersMobScreen();

@@ -75,7 +75,6 @@ class _CustomerCardState extends State<CustomerCard> {
               Row(
                 children: [
                   Expanded(
-                    flex: 2,
                     child: Container(
                       height: 55,
                       decoration: BoxDecoration(

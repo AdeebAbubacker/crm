@@ -20,7 +20,10 @@ class CustomerInfoTabScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70),
         child: Padding(
-          padding: const EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.only(
+            top: 10,
+            bottom: 10,
+          ),
           child: AppBar(
             forceMaterialTransparency: true,
             automaticallyImplyLeading: false,

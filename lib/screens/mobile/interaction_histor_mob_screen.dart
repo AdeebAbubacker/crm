@@ -327,6 +327,84 @@ class _InteractionHistoryMobScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80),
+        child: Padding(
+          padding: const EdgeInsets.only(
+            top: 10,
+            bottom: 10,
+          ),
+          child: AppBar(
+            forceMaterialTransparency: true, automaticallyImplyLeading: false,
+            backgroundColor: Colors.deepPurple, // Vibrant background color
+            elevation: 0,
+            title: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                        padding: const EdgeInsets.all(14.0),
+                        child: Transform.rotate(
+                          angle: pi,
+                          child: Transform.scale(
+                            scaleX: 0.6,
+                            scaleY: 0.6,
+                            child: Image.asset(
+                              'assets/icons/back_arrow.png',
+                              color: const Color(0XFF2C3235),
+                              width: 30,
+                            ),
+                          ),
+                        )),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10),
+                    Text(
+                      "Interaction",
+                      style: TextStyles.rubik15white22,
+                    ),
+                    Text(
+                      "History",
+                      style: TextStyles.rubik15white22,
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: const Color(0XFF2C3235)),
+                  child: Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Image.asset(
+                      'assets/icons/external-link.png',
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      width: 30,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
       backgroundColor: Color(0XFF272815),
       body: SafeArea(
         child: Padding(
@@ -337,76 +415,13 @@ class _InteractionHistoryMobScreenState
             child: Column(
               children: [
                 SizedBox(
-                  height: 60,
-                ),
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Colors.white,
-                        ),
-                        child: Padding(
-                            padding: const EdgeInsets.all(14.0),
-                            child: Transform.rotate(
-                              angle: pi,
-                              child: Transform.scale(
-                                scaleX: 0.6,
-                                scaleY: 0.6,
-                                child: Image.asset(
-                                  'assets/icons/back_arrow.png',
-                                  color: const Color(0XFF2C3235),
-                                  width: 30,
-                                ),
-                              ),
-                            )),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 10),
-                        Text(
-                          "Interaction",
-                          style: TextStyles.rubik15white22,
-                        ),
-                        Text(
-                          "History",
-                          style: TextStyles.rubik15white22,
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: const Color(0XFF2C3235)),
-                      child: Padding(
-                        padding: EdgeInsets.all(15.0),
-                        child: Image.asset(
-                          'assets/icons/external-link.png',
-                          color: const Color.fromARGB(255, 255, 255, 255),
-                          width: 30,
-                        ),
-                      ),
-                    ),
-                  ],
+                  height: 30,
                 ),
                 const SizedBox(
                   height: 30,
                 ),
                 ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: interactionModel.length,
                   itemBuilder: (context, index) {
@@ -465,7 +480,7 @@ class InteractionCard extends StatelessWidget {
               children: [
                 Text(
                   interactionModel.date,
-                  style: TextStyles.rubik13grey82w300,
+                  style: TextStyles.rubik13grey82w500,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

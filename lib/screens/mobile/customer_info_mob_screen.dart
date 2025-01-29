@@ -15,8 +15,80 @@ class CustomerInfoMobScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       backgroundColor: const Color(0XFFECEFEC),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70),
+        child: Padding(
+          padding: const EdgeInsets.only(
+            top: 10,
+            bottom: 10,
+          ),
+          child: AppBar(
+            forceMaterialTransparency: true, automaticallyImplyLeading: false,
+            backgroundColor: Colors.deepPurple, // Vibrant background color
+            elevation: 0,
+            title: Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                        padding: const EdgeInsets.all(14.0),
+                        child: Transform.rotate(
+                          angle: pi,
+                          child: Transform.scale(
+                            scaleX: 0.6,
+                            scaleY: 0.6,
+                            child: Image.asset(
+                              'assets/icons/back_arrow.png',
+                              color: Colors.black,
+                              width: 30,
+                            ),
+                          ),
+                        )),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 10,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 10),
+                      Text("Customer", style: TextStyles.rubik15black18),
+                      Text("Information", style: TextStyles.rubik15black18),
+                    ],
+                  ),
+                ),
+                const Spacer(),
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Image.asset(
+                      "assets/icons/star.png",
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -25,66 +97,6 @@ class CustomerInfoMobScreen extends StatelessWidget {
               children: [
                 const SizedBox(
                   height: 50,
-                ),
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Colors.white,
-                        ),
-                        child: Padding(
-                            padding: const EdgeInsets.all(14.0),
-                            child: Transform.rotate(
-                              angle: pi,
-                              child: Transform.scale(
-                                scaleX: 0.6,
-                                scaleY: 0.6,
-                                child: Image.asset(
-                                  'assets/icons/back_arrow.png',
-                                  color: Colors.black,
-                                  width: 30,
-                                ),
-                              ),
-                            )),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 10,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 10),
-                          Text("Customer", style: TextStyles.rubik18black22w100),
-                          Text("Information",
-                              style: TextStyles.rubik18black22w100),
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: Colors.white,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Image.asset(
-                          "assets/icons/star.png",
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
                 const SizedBox(height: 10),
                 CustomerInfoCard(
@@ -202,7 +214,7 @@ class TaskScheduleCard extends StatelessWidget {
                 crossAxisSpacing: 8.0,
                 mainAxisSpacing: 8.0, childAspectRatio: 1 / 1.4,
               ),
-              itemCount: 31, // Number of days in October
+              itemCount: 30, // Number of days in October
               itemBuilder: (context, index) {
                 int date = index + 1; // Dates from 1 to 31
                 Map<int, dynamic> customDateImages = {
